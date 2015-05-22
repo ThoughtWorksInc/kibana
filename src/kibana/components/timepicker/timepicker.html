@@ -21,10 +21,10 @@
 
   <ul class="nav nav-tabs" role="tablist" ng-init="tab = 'filter'">
     <li ng-class="{active:tab== 'filter'}">
-      <a href ng-click="tab = 'filter'">Time Filter</a>
+      <a href ng-click="tab = 'filter'">时间段选择</a>
     </li>
     <li ng-class="{active:tab== 'interval'}">
-      <a href ng-click="tab = 'interval'">Refresh Interval</a>
+      <a href ng-click="tab = 'interval'">刷新间隔</a>
     </li>
   </ul>
 
@@ -37,13 +37,13 @@
         <div class="col-md-2">
           <ul class="nav nav-pills nav-stacked kbn-timepicker-modes">
             <li ng-class="{active: mode=='quick'}">
-              <a ng-click="setMode('quick')">quick</a>
+              <a ng-click="setMode('quick')">快速选择</a>
             </li>
             <li ng-class="{active: mode=='relative'}">
-              <a ng-click="setMode('relative')">relative</a>
+              <a ng-click="setMode('relative')">相对时间</a>
             </li>
             <li ng-class="{active: mode=='absolute'}">
-              <a ng-click="setMode('absolute')">absolute</a>
+              <a ng-click="setMode('absolute')">绝对时间</a>
             </li>
           </ul>
         </div>
@@ -115,7 +115,7 @@
                   <br>
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary kbn-timepicker-go" ng-disabled="!relative.preview">
-                      Go
+                      查看
                     </button>
                   </div>
                 </div>
@@ -126,7 +126,7 @@
               <form name="absoluteTime" ng-submit="applyAbsolute()">
                 <div class="kbn-timepicker-section">
                   <div>
-                    <label class="small">From: <span ng-show="!absolute.from"><i>Invalid Date</i></span>
+                    <label class="small">开始时间: <span ng-show="!absolute.from"><i>Invalid Date</i></span>
                     </label>
                     <input type="text" required class="form-control" input-datetime="{{format}}" ng-model="absolute.from">
                   </div>
@@ -137,7 +137,7 @@
 
                 <div class="kbn-timepicker-section">
                   <div>
-                    <label class="small">To:
+                    <label class="small">结束时间:
                       <a class="label label-default" ng-click="setToNow()">Set To Now</a>
                     </label>
                     <span ng-show="!absolute.to"><i>Invalid Date</i></span>

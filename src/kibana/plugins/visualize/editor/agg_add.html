@@ -1,5 +1,5 @@
 <div ng-show="add.form" class="vis-editor-agg-add-schemas">
-  <label>Select {{ groupName }} type</label>
+  <label>选择 {{ groupName }} 类型</label>
   <ul class="form-group list-group list-group-menu">
     <li
       ng-repeat="schema in availableSchema"
@@ -20,11 +20,11 @@
 
   <div ng-if="!add.form">
     <span ng-if="groupName !== 'buckets' || !stats.count">
-      <i class="fa fa-plus"></i> Add Aggregation
+      <i class="fa fa-plus"></i> 添加聚合
     </span>
     <span ng-if="groupName === 'buckets' && stats.count > 0">
-      <i class="fa fa-code-fork"></i> Add Sub Aggregation
+      <i class="fa fa-code-fork"></i> 添加子聚合
     </span>
   </div>
-  <span ng-if="add.form">cancel</span>
+  <span ng-if="add.form">取消</span>
 </button>

@@ -62,8 +62,8 @@
             <span bindonce bo-bind="opts.savedSearch.title"></span>
             <i tooltip="Reload saved query" ng-click="resetQuery();" class="fa fa-undo small"></i>
           </span>
+          <ng-pluralize count="hits" when="{'1':'记录数', 'other':'记录数'}"></ng-pluralize>
           <strong class="discover-info-hits">{{(hits || 0) | number:0}}</strong>
-          <ng-pluralize count="hits" when="{'1':'hit', 'other':'hits'}"></ng-pluralize>
         </div>
 
         <div class="discover-content">
@@ -71,11 +71,11 @@
           <div ng-show="resultState === 'none'">
               <div class="col-md-10 col-md-offset-1">
 
-                <h1>No results found <i class="fa fa-meh-o"></i></h1>
+                <h1>没找到记录<i class="fa fa-meh-o"></i></h1>
 
-                <p>
+<!--                 <p>
                   Unfortunately I could not find any results matching your search. I tried really hard. I looked all over the place and frankly, I just couldn't find anything good. Help me, help you. Here's some ideas:
-                </p>
+                </p> -->
 
                 <div class="shard-failures" ng-show="failures">
                   <h3>Shard Failures</h3>
@@ -87,14 +87,14 @@
                   <a ng-click="showLessFailures()" ng-if="failures.length === failuresShown && failures.length > 5">Show Less</a>
                 </div>
 
-                <div ng-show="opts.timefield">
+<!--                 <div ng-show="opts.timefield">
                   <p>
-                    <h3>Expand your time range</h3>
+                    <h3>调整时间范围</h3>
                     <p>I see you are looking at an index with a date field. It is possible your query does not match anything in the current time range, or that there is no data at all in the currently selected time range. Click the button below to open the time picker. For future reference you can open the time picker by clicking the <a class="btn btn-xs navbtn" ng-click="toggleTimepicker()">time picker <i class="fa fa-clock-o"></i></a> in the top right corner of your screen.
                   </p>
-                </div>
+                </div> -->
 
-                <h3>Refine your query</h3>
+<!--                 <h3>Refine your query</h3>
                 <p>
                   The search bar at the top uses Elasticsearch's support for Lucene Query String syntax. Let's say we're searching web server logs that have been parsed into a few fields.
                 </p>
@@ -115,7 +115,7 @@
 
                   Or HTML
                   <pre>status:[400 TO 499] AND (extension:php OR extension:html)</pre>
-                </p>
+                </p> -->
 
               </div>
           </div>

@@ -4,7 +4,7 @@
   </div>
 
   <div class="sidebar-list-header">
-    <h5>Selected Fields</h5>
+    <h5>显示字段</h5>
   </div>
   <ul
     bindonce class="list-unstyled discover-selected-fields" >
@@ -13,7 +13,7 @@
   </ul>
 
   <div class="sidebar-list-header sidebar-item">
-    <h5>Fields
+    <h5>字段
       <i
         ng-class="{ 'fa-chevron-right': !showFields, 'fa-chevron-down': showFields }"
         ng-click="showFields = !showFields"
@@ -34,7 +34,7 @@
     <form role="form" class="discover-field-details">
       <div class="form-group">
         <label>
-          Analyzed
+          已分析
         </label>
         <select
           ng-options="opt.value as opt.label for opt in filter.boolOpts"
@@ -44,7 +44,7 @@
       </div>
       <div class="form-group">
         <label>
-          Indexed
+          已索引
         </label>
         <select
           ng-options="opt.value as opt.label for opt in filter.boolOpts"
@@ -54,7 +54,7 @@
       </div>
       <div class="form-group">
         <label>
-          Type
+          类型
         </label>
         <select
           ng-options="field as field for field in fieldTypes"
@@ -64,14 +64,14 @@
       </div>
       <div class="form-group">
         <label>
-          Field name
+          字段名称
         </label>
         <input type="text" class="form-control" ng-model="filter.vals.name">
       </div>
       <div class="form-group">
         <label>
           <input type="checkbox" ng-model="filter.vals.missing">
-          Hide Missing Fields
+          隐藏字段
         </label>
       </div>
     </form>
@@ -79,14 +79,14 @@
       ng-click="filter.reset()"
       ng-disabled="!filter.active"
       class="sidebar-item-button danger ng-scope">
-      Reset Filters
+      重置过滤器
     </div>
   </div>
 
   <ul bindonce
     ng-show="(fields | filter:filter.popularity).length > 0"
     class="list-unstyled sidebar-well discover-popular-fields" ng-class="{ 'hidden-sm': !showFields, 'hidden-xs': !showFields }">
-    <li class="sidebar-item sidebar-list-header"><h6>Popular fields</h6></li>
+    <li class="sidebar-item sidebar-list-header"><h6>常用字段</h6></li>
     <discover-field ng-repeat="field in popularFields | filter:filter.isFieldFiltered">
     </discover-field>
   </ul>
