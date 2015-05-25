@@ -1,0 +1,62 @@
+<kbn-settings-app section="users">
+  <kbn-settings-users class="container">
+    <h2>用户管理</h2>
+<!--     <p>
+      From here you can delete saved objects, such as saved searches. You can also edit the raw data of saved objects. Typically objects are only modified via their associated application, which is probably what you should use instead of this screen. Each tab is limited to 100 results. You can use the filter to find objects not in the default list.
+    </p> -->
+    <form>
+      <input ng-model="advancedFilter" class="form-control span12" type="text" placeholder="Filter"/>
+    </form>
+
+
+    <div class="tab-content">
+      <div class="action-bar">
+        <label>
+          <input type="checkbox" ng-model="deleteAll">
+          全选
+        </label>
+        <a ng-disabled="!deleteAllBtn"
+          confirm-click="bulkDelete()"
+          confirmation="Are you sure want to delete the selected {{service.title}}? This action is irreversible!"
+          class="delete-all btn btn-danger btn-xs"><i class="fa fa-trash"></i> 删除</a>
+        <a
+          href="#/settings/users/new"
+          class="btn btn-primary btn-xs">
+          <i class="fa fa-plus"></i> 新建
+        </a>
+      </div>
+      <div ng-repeat="service in services" ng-class="{ active: state.tab === service.title }" class="tab-pane">
+        <ul class="list-unstyled">
+          <li class="item" ng-repeat="item in service.data | orderBy:'title'">
+            <div class="actions pull-right">
+              <button
+                ng-click="edit(service, item)"
+                class="btn btn-default">
+                <i class="fa fa-pencil"></i>
+              </button>
+
+              <button
+                ng-click="open(item)"
+                class="btn btn-info">
+                <i class="fa fa-eye"></i>
+              </button>
+            </div>
+
+            <div class="pull-left">
+              <input
+                ng-click="item.checked = !item.checked; toggleDeleteBtn(service)"
+                ng-checked="item.checked"
+                type="checkbox" >
+            </div>
+
+            <div class="item-title">
+              <a ng-click="edit(service, item)">{{ item.title }}</a>
+            </div>
+          </li>
+          <li ng-if="!service.data.length" class="empty">No "{{service.title}}" found.</li>
+        </ul>
+      </div>
+    </div>
+
+  </kbn-settings-users>
+</kbn-settings-app>
