@@ -33,9 +33,9 @@ var public_folder = path.resolve(__dirname, '..', 'public');
 if (!checkPath(public_folder)) public_folder = path.resolve(__dirname, '..', '..', 'kibana');
 
 // Check to see if htpasswd file exists in the root directory otherwise set it to false
-var htpasswdPath = path.resolve(__dirname, '..', '.htpasswd');
-if (!checkPath(htpasswdPath)) htpasswdPath = path.resolve(__dirname, '..', '..', '..', '.htpasswd');
-if (!checkPath(htpasswdPath)) htpasswdPath = false;
+// var htpasswdPath = path.resolve(__dirname, '..', '.htpasswd');
+// if (!checkPath(htpasswdPath)) htpasswdPath = path.resolve(__dirname, '..', '..', '..', '.htpasswd');
+// if (!checkPath(htpasswdPath)) htpasswdPath = false;
 
 var packagePath = path.resolve(__dirname, '..', 'package.json');
 try {
@@ -55,7 +55,7 @@ var config = module.exports = {
   bundled_plugins_folder  : path.resolve(public_folder, 'plugins'),
   kibana                  : kibana,
   package                 : require(packagePath),
-  htpasswd                : htpasswdPath,
+  // htpasswd                : htpasswdPath,
   buildNum                : '@@buildNum',
   maxSockets              : kibana.maxSockets,
   log_file                : kibana.log_file,

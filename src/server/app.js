@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var config = require('./config');
 
-var routes = require('./routes/index');
+// var routes = require('./routes/index');
 var proxy = require('./routes/proxy');
 
 var app = express();
@@ -39,8 +39,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static(config.public_folder));
-if (config.external_plugins_folder) app.use('/plugins', express.static(config.external_plugins_folder));
 
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+
+if (config.external_plugins_folder) app.use('/plugins', express.static(config.external_plugins_folder));
+var routes = require('./routes/index')(passport);
 app.use('/', routes);
 
 

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.container
+    div.row
+      div.col-sm-6.col-md-4.col-md-offset-4
+        h1.text-center.login-title 登陆
+          div.account-wall
+            form(class='form-signin', action='/login', method='POST')
+              input(type='text', name='username' class='form-control', placeholder='用户名',required, autofocus)
+              input(type='password', name='password' class='form-control', placeholder='密码', required)
+              button(class='btn btn-lg btn-primary btn-block', type='submit') 登陆
+              span.clearfix
+          #message
+          if message
+            h1.text-center.error-message #{message}
